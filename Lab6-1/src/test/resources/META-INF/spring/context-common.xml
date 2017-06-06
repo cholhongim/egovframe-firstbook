@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- annotation 형식 bean 정의한 것에 대해 자동적으로 scan 하여 등록함. 
+		여기서는 AnnotationEmpServiceImpl, AnnotationEmpDAO -->
+	<!-- TODO [Step 2-5] component-scan 설정 -->
+	<context:component-scan base-package="lab" />
+
+</beans>
+
