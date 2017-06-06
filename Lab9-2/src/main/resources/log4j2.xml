@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%p [%c{1}] %m%n" />		
+		</Console>
+		<Console name="console2" target="SYSTEM_OUT">
+			<PatternLayout pattern="%p [%c{1.}] #%m%n" />		
+		</Console>
+	</Appenders>
+
+	<Loggers>
+	    <Logger name="lab" level="INFO" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+		<!-- log SQL with timing information, post execution -->
+		<Logger name="jdbc.sqltiming" level="INFO" additivity="false">
+			<AppenderRef ref="console2" />
+		</Logger>
+		<Logger name="jdbc.sqlonly" level="INFO" additivity="false">
+			<AppenderRef ref="console2" />
+		</Logger>
+		<Logger name="egovframework" level="DEBUG" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Logger name="org.springframework" level="INFO" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Logger name="org.springframework.transaction.interceptor" level="TRACE" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Logger name="org.springframework.transaction.annotation" level="TRACE" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Root level="ERROR">
+			<AppenderRef ref="console" />
+		</Root>
+	</Loggers>
+</Configuration>
