@@ -20,8 +20,6 @@
             <li><a href="hello2.do">Hello World2</a></li>
             
             <li><a href="idservice.do">ID Service</a></li>
-            
-            <li><a href="member.do">사용자 등록화면</a></li>
 
         </ul>
     </li>

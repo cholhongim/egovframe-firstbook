@@ -7,15 +7,7 @@
 <title>회원 등록 폼</title>
 </head>
 <body>
-<form:form commandName="idInfo">
-<div>
-<form:label path="id">ID:</form:label>
-           ${idInfo.id}
-</div>
-<div>
-<form:label path="name">NAME:</form:label>
-         ${idInfo.name}
-</div>
-</form:form>
+<div>ID: ${idInfo.id}</div>
+<div>NAME: ${idInfo.name}</div>
 </body>
 </html>
