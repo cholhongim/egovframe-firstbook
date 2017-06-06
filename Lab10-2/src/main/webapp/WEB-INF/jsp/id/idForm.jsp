@@ -10,11 +10,13 @@
 <body>
 <h1>CUSTOMER ADD</h1>
 <form:form commandName="idInfo">
-    <div>ID : </div>
-    <div><form:input path="id"/></div>
-    <div>NAME : </div>
-    <div><form:input path="name"/></div>
-    <input type="submit" value="register">
+    <div>ID : 
+    <form:input path="id"/></div>
+    <br>
+    <div>NAME : 
+    <form:input path="name"/></div>
+    <br>
+    <div><input type="submit" value="register"></div>
 </form:form>
 </body>
 </html>
