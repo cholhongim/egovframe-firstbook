@@ -7,32 +7,8 @@
     
     <context:component-scan base-package="lab" />
     	
-    <!-- setting Locale Locale Interceptor Configuration  -->    
-    <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
-        p:paramName="lang" />
-
-    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
-
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
-        <property name="interceptors">
-            <list>
-                <ref bean="localeChangeInterceptor"/>
-            </list>
-        </property>
-    </bean>
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
-    
     <!-- set view resolver -->
     <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver"
         p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
-
-    <!-- messageSource Configuration -->
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basenames">
-            <list>
-                <value>messages.message-common</value>
-            </list>
-        </property>
-    </bean>
     
 </beans>
