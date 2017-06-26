@@ -5,4 +5,9 @@
 	<typeAliases>
 		<typeAlias alias="customerVO" type="lab.CustomerVO" />
 	</typeAliases>	
+	
+	<mappers>
+        <mapper resource ="META-INF/sqlmap/mappers/lab-dao-class.xml" />
+    </mappers>
+	
 </configuration>
