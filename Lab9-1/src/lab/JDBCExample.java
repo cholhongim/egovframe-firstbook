@@ -23,6 +23,10 @@ public class JDBCExample {
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/com", "com", "com01" );
 				System.out.println("connected");
 			
+				Statement stmt = conn.createStatement();
+				String sql2 = "delete from customer";
+				stmt.executeUpdate(sql2);
+				
 				int[] id = { 1, 2, 3 };
 				String[] name = { "KIM", "PARK", "LEE" };
 				String[] addr = { "A", "B", "C" };
@@ -38,7 +42,7 @@ public class JDBCExample {
 					pstmt.executeUpdate();
 				}
 				
-			Statement stmt = conn.createStatement();
+
 			ResultSet rset = stmt.executeQuery("SELECT id, name, addr FROM customer");
 			
 			while(rset.next()) {
