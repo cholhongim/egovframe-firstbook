@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="employee">
+    
+	<resultMap id="employeeResult" type="customerVO">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="address" column="addr" />
+	</resultMap>
+
+	<insert id="insertEmployee" parameterType="customerVO">
+			<![CDATA[
+				insert into employee (id, name, addr)
+				values	(#{id}, #{name}, #{address})
+			]]>
+	</insert>
+
+	<delete id="deleteEmployee" parameterType="customerVO">
+			<![CDATA[
+				delete from employee
+			]]>
+	</delete>
+
+	<update id="updateEmployee" parameterType="customerVO">
+			<![CDATA[
+				update employee set name=#{name}, addr=#{address}
+				where id = #{id}
+			]]>
+	</update>
+
+	<select id="selectEmployeeList" parameterType="customerVO" resultMap="employeeResult">
+			<![CDATA[
+				select	id, name, addr
+				from	employee	
+			]]>
+	</select>
+</mapper>
+
