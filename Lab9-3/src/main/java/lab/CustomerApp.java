@@ -21,21 +21,14 @@ public class CustomerApp {
 		vo.address = "SEOUL";
 		customer.insertCustomer(vo);
 		
-		vo.id = "2";
-		vo.name = "LEE";
-		vo.address = "PUSAN";
-		customer.insertCustomer(vo);
-
 		resultList= customer.selectCustomerList(vo);
 		printResult(resultList);
 		
-		vo.id = "2";
-		vo.name = "LEE";
-		vo.address = "DAEGEON";
+		vo.id = "1";
+		vo.name = "KIM";
+		vo.address = "PUSAN";
 		customer.updateCustomer(vo);
 
-		resultList= customer.selectCustomerList(vo);
-		printResult(resultList);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
