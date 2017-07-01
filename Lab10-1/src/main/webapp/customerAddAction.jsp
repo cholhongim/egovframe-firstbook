@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 </head>
 <body>
 <%
-    request.setCharacterEncoding("euc-kr");
+    request.setCharacterEncoding("UTF-8");
     String id = request.getParameter("id");
     String name = request.getParameter("name");
     String address = request.getParameter("address");
@@ -30,7 +30,7 @@
       response.sendRedirect(request.getContextPath()+"/customerList.jsp");
     } catch(Exception e) {
         e.printStackTrace();
-        out.print("ÀÔ·Â ¿¹¿Ü ¹ß»ý");
+        out.print("ìž…ë ¥ ì˜ˆì™¸ ë°œìƒ");
     } finally {
         try {statement.close();} catch(Exception e){}
         try {connection.close();} catch(Exception e){}

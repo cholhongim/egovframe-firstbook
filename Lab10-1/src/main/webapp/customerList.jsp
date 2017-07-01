@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>CUSTOMER LIST</title>
+<link href="css/Style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <h1>CUSTOMER LIST</h1>
@@ -26,12 +27,11 @@
     listStatement = connection.prepareStatement(listSql);
     listResultSet = listStatement.executeQuery();
 %>
-    <table border="1">
+    <table cellspacing="0">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>NAME</th>
-                <th>ADDRESS</th>
             </tr>
         </thead>
         <tbody>
@@ -39,24 +39,23 @@
             while(listResultSet.next()) {
 %>
                 <tr>
-
                     <td><a href="<%=request.getContextPath()%>/customerView.jsp?id=<%=listResultSet.getString("id")%>"><%=listResultSet.getInt("id")%></a></td>
                     <td><%=listResultSet.getString("name")%></td>
-                    <td><%=listResultSet.getString("addr")%></td>
                 </tr>
 <%        
             }
 %>
         </tbody>
     </table>
+    <p>
     <div>
-        <a href="<%=request.getContextPath()%>/customerAddForm.jsp">°Ô½Ã±Û ÀÔ·Â</a>
+        <a href="<%=request.getContextPath()%>/customerAddForm.jsp">ê²Œì‹œê¸€ ìž…ë ¥</a>
     </div>
 
 <%
     } catch(Exception e) {
         e.printStackTrace();
-        out.print("¸ñ·Ï °¡Á®¿À±â ½ÇÆÐ!");
+        out.print("ëª©ë¡ ê°€ì ¸ì˜¤ê¸° ì‹¤íŒ¨!");
     } finally {
         try {listResultSet.close();} catch(Exception e){}
         try {listStatement.close();} catch(Exception e){}

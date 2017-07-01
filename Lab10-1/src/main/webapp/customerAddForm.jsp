@@ -1,22 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>CUSTOMER ADD</title>
 </head>
 <body>
 <h1>CUSTOMER ADD</h1>
 <form action="<%=request.getContextPath()%>/customerAddAction.jsp" method="post">
-    <div>ID : </div>
-    <div><input name="id" id="id" type="text"/></div>
-    <div>NAME : </div>
-    <div><input name="name" id="name" type="text"/></div>
-    <div>ADDRESS : </div>
-    <div><input name="address" id="address" type="text"/></div>
+    <div>ID : 
+    <input name="id" type="text"/></div><p>
+    <div>NAME : 
+    <input name="name" type="text"/></div><p>
+    <div>ADDRESS :
+    <input name="address" type="text"/></div>
+    <p>
     <div>
-        <input type="submit" value="±ÛÀÔ·Â"/>
-        <input type="reset" value="ÃÊ±âÈ­"/>
+        <input type="submit" value="ê¸€ì €ìž¥"/>
+        <input type="reset" value="ì´ˆê¸°í™”"/>
     </div>
 </form>
 </body>

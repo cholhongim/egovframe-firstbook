@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>CUSTOMER VIEW</title>
 </head>
 <body>
@@ -35,9 +35,9 @@
                 <div>ADDRESS :</div>
                 <div><%=resultSet.getString("addr")%></div>
                 <div>
-                    <a href="<%=request.getContextPath()%>/customerList.jsp">∏Ò∑œ</a>
-                    <a href="<%=request.getContextPath()%>/customerModifyForm.jsp?id=<%=id%>">ºˆ¡§</a>
-                    <a href="<%=request.getContextPath()%>/customerRemoveAction.jsp?id=<%=id%>">ªË¡¶</a>
+                    <a href="<%=request.getContextPath()%>/customerList.jsp">Î™©Î°ù</a>
+                    <a href="<%=request.getContextPath()%>/customerModifyForm.jsp?id=<%=id%>">ÏàòÏ†ï</a>
+                    <a href="<%=request.getContextPath()%>/customerRemoveAction.jsp?id=<%=id%>">ÏÇ≠Ï†ú</a>
                 </div>
 <%
             }
