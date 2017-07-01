@@ -1,0 +1,24 @@
+<style type="text/css">
+table {
+    border-collapse: collapse;
+    width: 40em;
+    border: 2px solid #ddd;
+}
+
+th, td{
+    padding: 0.1em 1em;
+    font: 9pt 돋움 sans-serif;
+}
+
+thead{
+    background-color: #ddd;
+    border-top: 1px solid #a5a5a5;
+    border-bottom: 1px solid #a5a5a5;
+}
+
+th{
+    font-weight: normal;
+    text-align: center;
+}
+
+</style>
