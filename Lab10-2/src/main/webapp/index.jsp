@@ -19,7 +19,9 @@
             
             <li><a href="hello2.do">Hello World2</a></li>
             
-            <li><a href="idservice.do">ID Service</a></li>
+            <li><a href="person.do">Person Info Service</a></li>
+            
+            <li><a href="person2.do">Person Info Service2</a></li>
 
         </ul>
     </li>
