@@ -23,9 +23,8 @@ public class PersonServiceController {
 	}
 	
 	@RequestMapping(value = "/person.do", method=RequestMethod.POST)
-	protected String regist(@ModelAttribute("personinfo") person command, BindingResult errors, ModelMap model)
-	        throws Exception {
-
+	protected String regist(@ModelAttribute("personinfo") person command, 
+			  BindingResult errors, ModelMap model) throws Exception {
 		if (errors.hasErrors()) {
 			return formView;
 		}
@@ -40,13 +39,11 @@ public class PersonServiceController {
 	}
 	
 	@RequestMapping(value = "/person2.do", method=RequestMethod.POST)
-	protected String regist(@RequestParam("name") String name, 
+	protected String regist2(@RequestParam("name") String name, 
 		 	  @RequestParam(value="company", required=false) String company,
 	          @RequestParam(value="phone", required=false) String phone,
               @RequestParam(value="email", required=false) String email,
-              ModelMap model)
-	        throws Exception {
-
+              ModelMap model) throws Exception {
 		person personinfo = new person();
 		personinfo.setName(name);
 		personinfo.setCompany(company);
@@ -66,5 +63,15 @@ public class PersonServiceController {
 		pobject.setEmail("abc@email.com");
 		model.addAttribute("personinfo",pobject);
 		return formView;
+	}
+	
+	@RequestMapping(value = "/person3.do", method=RequestMethod.POST)
+	protected String regist3(@ModelAttribute("personinfo") person command, 
+			   BindingResult errors, ModelMap model) throws Exception {
+		if (errors.hasErrors()) {
+			return formView;
+		}
+		model.addAttribute("pinfo",command);
+		return successView;
 	}
 }
