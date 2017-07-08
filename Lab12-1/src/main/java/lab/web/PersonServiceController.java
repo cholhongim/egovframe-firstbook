@@ -29,17 +29,15 @@ public class PersonServiceController {
 	}
 	
 	@RequestMapping(value = "/person.do", method=RequestMethod.POST)
-	protected String regist(@ModelAttribute("person") Person command, 
+	protected String regist(@ModelAttribute("person") Person person, 
 			  BindingResult errors, ModelMap model) throws Exception {
 
-	    beanValidator.validate(command, errors);
-		System.out.println("validating");
+	    beanValidator.validate(person, errors);
 		if (errors.hasErrors()) {
-			System.out.println("error");
 			return formView;
 		}
 
-		model.addAttribute("pinfo",command);
+		model.addAttribute("pinfo",person);
 		return successView;
 	}
 

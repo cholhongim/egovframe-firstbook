@@ -10,7 +10,6 @@
 	<bean id="validatorFactory" class="org.springmodules.validation.commons.DefaultValidatorFactory">
 		<property name="validationConfigLocations">
 			<list>
-				<!-- 공통기술 -->
 		        <value>classpath:META-INF/validator/validator-rules.xml</value>
 		        <value>classpath:META-INF/validator/*.xml</value>        
 			</list>
