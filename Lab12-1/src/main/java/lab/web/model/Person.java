@@ -1,6 +1,6 @@
 package lab.web.model;
 
-public class person {
+public class Person {
 	
 	private String name;
 	private String company;

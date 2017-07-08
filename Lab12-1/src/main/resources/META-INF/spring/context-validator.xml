@@ -12,7 +12,7 @@
 			<list>
 				<!-- 공통기술 -->
 		        <value>classpath:META-INF/validator/validator-rules.xml</value>
-		        <value>classpath:META-INF/validator/**/*.xml</value>        
+		        <value>classpath:META-INF/validator/*.xml</value>        
 			</list>
 		</property>
 	</bean>

@@ -9,7 +9,20 @@
 </head>
 <body>
 <h1>사원정보</h1>
-<form:form commandName="personinfo">
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator" %>
+<script type="text/javascript" src="<c:url value="/validator.do"/>"></script>
+<validator:javascript formName="person" staticJavascript="false" xhtml="true" cdata="false"/>
+<script type="text/javascript">
+function save(form){
+	if(!validatePerson(form)){
+		return;
+	}else{
+		form.submit();
+	}
+}
+</script>
+
+<form:form commandName="person">
     <div><spring:message code="label.name" /> : 
     <form:input path="name"/><form:errors path="name" /></div><br>
     <div><spring:message code="label.company" /> : 
@@ -18,7 +31,7 @@
     <form:input path="phone"/><form:errors path="phone" /></div><br>
     <div><spring:message code="label.email" /> : 
     <form:input path="email"/><form:errors path="email" /></div><br>
-    <div><input type="submit" value="register"></div>
+    <div><input type="button" value="SAVE" onclick="save(this.form)"/> </div>
 </form:form>
 </body>
 </html>

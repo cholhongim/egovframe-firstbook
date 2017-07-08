@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
-import lab.web.model.person;
+import lab.web.model.Person;
 
 @Controller
 public class PersonServiceController {
@@ -24,17 +24,18 @@ public class PersonServiceController {
 
 	@RequestMapping(value = "/person.do", method=RequestMethod.GET)
 	protected String personInput(ModelMap model) throws Exception{
-		model.addAttribute("personinfo",new person());
+		model.addAttribute("person",new Person());
 		return formView;
 	}
 	
 	@RequestMapping(value = "/person.do", method=RequestMethod.POST)
-	protected String regist(@ModelAttribute("personinfo") person command, 
+	protected String regist(@ModelAttribute("person") Person command, 
 			  BindingResult errors, ModelMap model) throws Exception {
 
-	    beanValidator.validate(command, errors); //validation 수행
-
+	    beanValidator.validate(command, errors);
+		System.out.println("validating");
 		if (errors.hasErrors()) {
+			System.out.println("error");
 			return formView;
 		}
 
@@ -44,7 +45,7 @@ public class PersonServiceController {
 
 	@RequestMapping(value = "/person2.do", method=RequestMethod.GET)
 	protected String personInput2(ModelMap model) throws Exception{
-		model.addAttribute("personinfo",new person());
+		model.addAttribute("personinfo",new Person());
 		return formView;
 	}
 	
@@ -54,7 +55,7 @@ public class PersonServiceController {
 	          @RequestParam(value="phone", required=false) String phone,
               @RequestParam(value="email", required=false) String email,
               ModelMap model) throws Exception {
-		person personinfo = new person();
+		Person personinfo = new Person();
 		personinfo.setName(name);
 		personinfo.setCompany(company);
 		personinfo.setPhone(phone);
@@ -66,7 +67,7 @@ public class PersonServiceController {
 	
 	@RequestMapping(value = "/person3.do", method=RequestMethod.GET)
 	protected String personInput3(ModelMap model) throws Exception{
-		person pobject = new person();
+		Person pobject = new Person();
 		pobject.setName("KIM");
 		pobject.setCompany("company");
 		pobject.setPhone("02-1234-5948");
@@ -76,7 +77,7 @@ public class PersonServiceController {
 	}
 	
 	@RequestMapping(value = "/person3.do", method=RequestMethod.POST)
-	protected String regist3(@ModelAttribute("personinfo") person command, 
+	protected String regist3(@ModelAttribute("personinfo") Person command, 
 			   BindingResult errors, ModelMap model) throws Exception {
 		if (errors.hasErrors()) {
 			return formView;
