@@ -11,13 +11,13 @@
 <h1>사원정보</h1>
 <form:form commandName="personinfo">
     <div><spring:message code="label.name" /> : 
-    <form:input path="name"/></div><br>
+    <form:input path="name"/><form:errors path="name" /></div><br>
     <div><spring:message code="label.company" /> : 
-    <form:input path="company"/></div><br>
+    <form:input path="company"/><form:errors path="company" /></div><br>
     <div><spring:message code="label.phone" /> : 
-    <form:input path="phone"/></div><br>
+    <form:input path="phone"/><form:errors path="phone" /></div><br>
     <div><spring:message code="label.email" /> : 
-    <form:input path="email"/></div><br>
+    <form:input path="email"/><form:errors path="email" /></div><br>
     <div><input type="submit" value="register"></div>
 </form:form>
 </body>

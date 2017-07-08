@@ -1,5 +1,6 @@
 package lab.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import lab.web.model.person;
 
@@ -15,6 +17,10 @@ public class PersonServiceController {
 	
 	private String formView = "person/personForm";
 	private String successView = "person/personSuccess";
+	
+	@Autowired
+	private DefaultBeanValidator beanValidator;
+
 
 	@RequestMapping(value = "/person.do", method=RequestMethod.GET)
 	protected String personInput(ModelMap model) throws Exception{
@@ -25,9 +31,13 @@ public class PersonServiceController {
 	@RequestMapping(value = "/person.do", method=RequestMethod.POST)
 	protected String regist(@ModelAttribute("personinfo") person command, 
 			  BindingResult errors, ModelMap model) throws Exception {
+
+	    beanValidator.validate(command, errors); //validation 수행
+
 		if (errors.hasErrors()) {
 			return formView;
 		}
+
 		model.addAttribute("pinfo",command);
 		return successView;
 	}
