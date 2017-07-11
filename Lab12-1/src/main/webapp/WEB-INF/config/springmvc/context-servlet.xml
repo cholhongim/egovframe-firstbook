@@ -9,8 +9,6 @@
     
     <context:component-scan base-package="lab" />
 
-	<mvc:annotation-driven/>
-	<mvc:view-controller path="/validator.do"/>
     <!-- set view resolver -->
     <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver"
         p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
