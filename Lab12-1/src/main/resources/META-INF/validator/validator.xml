@@ -7,7 +7,7 @@
 
     <formset>
         <form name="person">
-        	<field property="name" depends="required">
+        	<field property="name" depends="required,korean">
         		<arg0 key="label.name" />
 			</field>
         	<field property="company" depends="required">
