@@ -20,11 +20,11 @@
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(dbUrl, dbUser, dbPw);
-            String sql = "DELETE FROM customer WHERE id=?";
+            String sql = "DELETE FROM employee WHERE id=?";
             statement = connection.prepareStatement(sql);
             statement.setString(1, id);
             if(statement.executeUpdate()==1){
-                response.sendRedirect(request.getContextPath()+"/customerList.jsp");
+                response.sendRedirect(request.getContextPath()+"/employeeList.jsp");
             }
         } catch(Exception e) {
             e.printStackTrace();

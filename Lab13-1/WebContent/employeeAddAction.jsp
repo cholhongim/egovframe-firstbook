@@ -11,6 +11,10 @@
     request.setCharacterEncoding("UTF-8");
     String id = request.getParameter("id");
     String name = request.getParameter("name");
+    String dept = request.getParameter("dept");
+    String age = request.getParameter("age");
+    String phone = request.getParameter("phone");
+    String email = request.getParameter("email");
     String address = request.getParameter("address");
     String dbUrl = "jdbc:mysql://127.0.0.1:3306/com";
     String dbUser = "com";
@@ -20,14 +24,18 @@
     try {
         Class.forName("com.mysql.jdbc.Driver");
         connection = DriverManager.getConnection(dbUrl, dbUser, dbPw);
-        String sql = "INSERT INTO customer(id, name, addr) values(?,?,?)";
+        String sql = "INSERT INTO employee(id, name, dept, age, phone, email, addr) values(?,?,?,?,?,?,?)";
         statement = connection.prepareStatement(sql);
         statement.setString(1,id);
         statement.setString(2,name);
-        statement.setString(3,address);
+        statement.setString(3,dept);
+        statement.setString(4,age);
+        statement.setString(5,phone);
+        statement.setString(6,email);
+        statement.setString(7,address);
         statement.executeUpdate();
         
-      response.sendRedirect(request.getContextPath()+"/customerList.jsp");
+      response.sendRedirect(request.getContextPath()+"/employeeList.jsp");
     } catch(Exception e) {
         e.printStackTrace();
         out.print("입력 예외 발생");

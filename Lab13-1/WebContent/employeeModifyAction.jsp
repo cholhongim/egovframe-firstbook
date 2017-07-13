@@ -8,12 +8,16 @@
 </head>
 <body>
 <%
-    request.setCharacterEncoding("euc-kr");
+    request.setCharacterEncoding("UTF-8");
     if(request.getParameter("id") == null) {
-        response.sendRedirect(request.getContextPath()+"/customerList.jsp");
+        response.sendRedirect(request.getContextPath()+"/employeeList.jsp");
     } else {
         String id = request.getParameter("id");
         String name = request.getParameter("name");
+        String dept = request.getParameter("dept");
+        String age = request.getParameter("age");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
         String address = request.getParameter("address");
     
         String dbUrl = "jdbc:mysql://127.0.0.1:3306/com";
@@ -24,13 +28,17 @@
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(dbUrl, dbUser, dbPw);
-            String selectSql = "UPDATE customer SET name=?, addr=? WHERE id=?";
+            String selectSql = "UPDATE employee SET name=?, dept=?, age=?, phone=?, email=?, addr=? WHERE id=?";
             statement = connection.prepareStatement(selectSql);
-            statement.setString(1, name);
-            statement.setString(2, address);
-            statement.setString(3, id);
+            statement.setString(1,name);
+            statement.setString(2,dept);
+            statement.setString(3,age);
+            statement.setString(4,phone);
+            statement.setString(5,email);
+            statement.setString(6,address);
+            statement.setString(7, id);
             statement.executeUpdate();
-            response.sendRedirect(request.getContextPath()+"/customerView.jsp?id="+id);
+            response.sendRedirect(request.getContextPath()+"/employeeView.jsp?id="+id);
         } catch(Exception e) {
             e.printStackTrace();
             out.print("MODIFY ERROR!");
