@@ -69,7 +69,7 @@
         }
 %>    
 <body onload="javascript:init(<%=dept%>)">
-        <form action="<%=request.getContextPath()%>/employeeModifyAction.jsp" method="post">
+        <form name="hmsForm" action="<%=request.getContextPath()%>/employeeModifyAction.jsp" method="post">
 <div id="wrap">
 	<table class="tbl_View">
 		<caption>Employee</caption>

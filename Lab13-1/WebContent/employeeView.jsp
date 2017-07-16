@@ -45,6 +45,7 @@
             if(resultSet.next()) {
 %>
 <body onload="javascript:init(<%=resultSet.getString("dept")%>)">
+<form name="hmsForm">
 <div id="wrap">
 	<table class="tbl_View">
 		<caption>Employee</caption>
@@ -107,5 +108,6 @@
         }
     }
 %>
+</form>
 </body>
 </html>
