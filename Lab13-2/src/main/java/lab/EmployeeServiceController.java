@@ -31,7 +31,6 @@ public class EmployeeServiceController {
 		if (errors.hasErrors()) {
 			return "employee/employeeAddForm";
 		}
-//		model.addAttribute("employeeinfo",command);
 		employeeservice.insertEmployee(command);
 		return "redirect:/employeeList.do";
 	}
@@ -68,7 +67,6 @@ public class EmployeeServiceController {
 		if (errors.hasErrors()) {
 			return "employee/employeeModifyForm";
 		}
-//		model.addAttribute("employeeinfo",command);
 		employeeservice.updateEmployee(command);
 		return "redirect:/employeeView.do?id="+command.getId();
 	}
