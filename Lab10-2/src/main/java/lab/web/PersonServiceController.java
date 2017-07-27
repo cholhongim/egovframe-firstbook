@@ -19,6 +19,7 @@ public class PersonServiceController {
 	@RequestMapping(value = "/person.do", method=RequestMethod.GET)
 	protected String personInput(ModelMap model) throws Exception{
 		model.addAttribute("personinfo",new person());
+//	protected String personInput(@ModelAttribute("personinfo") person command, ModelMap model) throws Exception{
 		return formView;
 	}
 	
