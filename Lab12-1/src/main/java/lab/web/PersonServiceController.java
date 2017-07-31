@@ -22,7 +22,6 @@ public class PersonServiceController {
 
 	@RequestMapping(value = "/validator.do")
 	protected String getValidator() throws Exception{
-
 		return "validator";
 	}
 
