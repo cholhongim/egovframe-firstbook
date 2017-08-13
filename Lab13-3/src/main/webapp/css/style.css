@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+@font-face {
+	font-family: "NanumGothic";
+	src: url("../fonts/NanumGothic.eot");
+	src:local(※), url("../fonts/NanumGothic.woff") format("woff");
+}
+@font-face {
+	font-family:"NanumGothicExtraBold";
+	src:url("../fonts/NanumGothicExtraBold.eot");
+	src:local(※), url("../fonts/NanumGothicExtraBold.woff") format("woff");
+}
+
+/* Base Style *****************************/
+* { margin: 0; padding: 0; border: 0; }
+body { overflow-y:scroll; }
+body, div, table, em, h1, h2, h3, h4, h5, h6, form, fieldset, p, th, td, input, textarea, select, button { font:12.5px/1.3 "NanumGothic", "dotum"; color:#666; }
+fieldset, img { border: 0; }
+textarea { width: 100%; }
+img, label { vertical-align: middle; }
+ul, ol { list-style : none; } 
+caption { display:none; }
+legend { position:absolute; top:-9000em; left:-9000em; width:0; height:0; visibility:hidden; }
+table { border-collapse: collapse; border-spacing: 0; width: 100%; }
+select { min-width:130px; border:1px solid #c9c9c9; padding:5px 3px 6px; font-family:"NanumGothic"; margin-right:3px; }
+a { color: #000; text-decoration: none; }
+a:hover { color: #000; text-decoration:underline; }
+a, button, input[type="button"] { cursor: pointer; }
+input[type="text"], 
+input[type="email"], 
+input[type="password"] { border:1px solid #c9c9c9; font-family:"NanumGothic"; padding:6px; }
+input[type="button"] { border:none; text-transform:uppercase; font-family:"NanumGothic"; padding:6px 16px 8px; background:#273447; color:#fff; }
+input[type="checkbox"] { vertical-align:middle; margin:0 5px 0 0; }
+.hide { text-indent:-99999em; }
+.clear { clear:both; }
+.txt-rt { text-align:right; }
+.mt20 { margin-top:20px; }
+
+#wrap { width:600px; margin:50px auto 50px; }
+
+/* Table Style */
+table { width:100%; table-layout:fixed; word-wrap:break-word; border-top:2px solid #323f52; border-bottom:1px solid #aaabb0; }
+table thead th { border-bottom:1px solid #c0c1c6; }
+table th { vertical-align:middle; background:#f8f9fb; color:#263248; font-family:"NanumGothicExtraBold"; }
+table tbody th, table td { border-top:1px solid #e2e3e5; }
+table th, table td { border-left:1px solid #e2e3e5; padding:10px; }
+table th:first-child, table td:first-child { border-left:none; }
+
+.tbl_List td { text-align:center; font-size:12px; }
+.tbl_List td:last-child { text-align:left; }
+.tbl_List tbody tr:nth-child(even) { background:#f9f9f9; }

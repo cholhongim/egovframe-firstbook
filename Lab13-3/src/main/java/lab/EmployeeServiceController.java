@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import lab.Employee;
 
@@ -18,6 +20,14 @@ import lab.Employee;
 public class EmployeeServiceController {
 	@Resource(name="employeeService")
 	EmployeeService employeeservice;
+	
+	@Autowired
+	private DefaultBeanValidator beanValidator;
+	
+	@RequestMapping(value = "/validator.do")
+	protected String getValidator() throws Exception{
+		return "validator";
+	}
 	
 	@RequestMapping(value = "/employeeAdd.do", method=RequestMethod.GET)
 	protected String employeeAddForm(ModelMap model) throws Exception{
@@ -28,6 +38,7 @@ public class EmployeeServiceController {
 	@RequestMapping(value = "/employeeAdd.do", method=RequestMethod.POST)
 	protected String employeeAdd(@ModelAttribute("employee") Employee command, 
 			  BindingResult errors, ModelMap model) throws Exception {
+	    beanValidator.validate(command, errors);
 		if (errors.hasErrors()) {
 			return "employee/employeeAddForm";
 		}
@@ -64,6 +75,7 @@ public class EmployeeServiceController {
 	@RequestMapping(value = "/employeeModify.do", method=RequestMethod.POST)
 	protected String employeeModify(@ModelAttribute("employee") Employee command, 
 			  BindingResult errors, ModelMap model) throws Exception {
+	    beanValidator.validate(command, errors);
 		if (errors.hasErrors()) {
 			return "employee/employeeModifyForm";
 		}
