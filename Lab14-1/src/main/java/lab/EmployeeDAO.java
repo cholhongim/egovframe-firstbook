@@ -1,6 +1,7 @@
 package lab;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
@@ -20,12 +21,15 @@ public class EmployeeDAO extends EgovAbstractMapper {
         return delete("employee.deleteEmployee", vo);
     }
 
-    public List<Employee> selectEmployeeList(Employee vo) {
-        return selectList("employee.selectEmployeeList", vo);
+    public List<Employee> selectEmployeeList(Map<?, ?> param) {
+        return selectList("employee.selectEmployeeList", param);
     }
 
     public Employee selectEmployee(Employee vo) {
         return (Employee) selectOne("employee.selectEmployee", vo);
     }
 	
+	public int getEmployeeCount(Map<?, ?> param) {
+		return (Integer)selectOne("employee.getEmployeeCount", param);
+	}
 }

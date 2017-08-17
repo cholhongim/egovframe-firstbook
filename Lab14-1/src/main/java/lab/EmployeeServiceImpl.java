@@ -1,6 +1,8 @@
 package lab;
 
 import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -25,11 +27,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeDAO.deleteEmployee(employeeVO);
 	}
 
-	public List<Employee> selectEmployeeList(Employee employeeVO) throws Exception {
-		return employeeDAO.selectEmployeeList(employeeVO);
+	public List<Employee> selectEmployeeList(Map<?, ?> param) throws Exception {
+		return employeeDAO.selectEmployeeList(param);
 	}
 	
 	public Employee selectEmployee(Employee employeeVO) throws Exception {
 		return employeeDAO.selectEmployee(employeeVO);
+	}
+	
+	public int getEmployeeCount(Map<?, ?> param) {
+		return employeeDAO.getEmployeeCount(param);
 	}
 }

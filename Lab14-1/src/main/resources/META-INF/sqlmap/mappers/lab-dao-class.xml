@@ -34,10 +34,12 @@
 			]]>
 	</delete>
 
-	<select id="selectEmployeeList" parameterType="employeeVO" resultMap="employeeResult">
+	<select id="selectEmployeeList" parameterType="java.util.Map" resultMap="employeeResult">
 			<![CDATA[
 				select	id, name
 				from	employee	
+				order by CONVERT(id,SIGNED)
+	            limit #{firstIndex}, #{recordCountPerPage}
 			]]>
 	</select>
 	
@@ -47,6 +49,12 @@
 				from	employee	
 				where id = #{id} 
 			]]>
+	</select>
+		<select id="getEmployeeCount" parameterType="java.util.Map" resultType="int">
+	    <![CDATA[
+			select count(*) id
+			from employee
+		]]>
 	</select>
 </mapper>
 

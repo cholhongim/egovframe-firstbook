@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,11 @@
 <title>CUSTOMER LIST</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
+<script type="text/javascript">
+	function linkPage(pageNo){
+		location.href = "employeeList.do?pageNo="+pageNo;
+	}
+</script>
 <body>
 <form:form commandName="employee" action="employeeList.do">
 <div id="wrap">
@@ -37,11 +43,24 @@
         </c:forEach>
         </tbody>
     </table>
+    <table width="50%">
+	<tr>
+		<td align="center">
+		<div id="pagination">
+		<ui:pagination paginationInfo = "${paginationInfo}"
+			type="image"
+			jsFunction="linkPage"
+			/>
+		</div>	
+		</td>
+	</tr>
+</table>
     <p>
     	<div class="txt-rt mt20">
 		<input type="button" value="사원추가" onclick="location.href='employeeAdd.do'" />
 	</div>
 </div>
+
 </form:form>
 </body>
 </html>

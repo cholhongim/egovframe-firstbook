@@ -1,6 +1,7 @@
 package lab;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
-import lab.Employee;
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
 public class EmployeeServiceController {
@@ -47,13 +48,34 @@ public class EmployeeServiceController {
 	}
 
 	@RequestMapping(value = "/employeeList.do")
-	protected String employList(ModelMap model) throws Exception{
-		Employee vo = new Employee();
-		List<Employee> employeelist = employeeservice.selectEmployeeList(vo);
+	protected String employList(@RequestParam(value = "pageNo", required = false) String pageNo, ModelMap model,
+			@RequestParam Map<String, Object> commandMap) throws Exception{
+
+		int currentPageNo;
+		try {
+			currentPageNo = Integer.parseInt(pageNo);
+		} catch (Exception e) {
+			currentPageNo = 1;
+		}
+		
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(currentPageNo);
+		paginationInfo.setRecordCountPerPage(3);
+		paginationInfo.setPageSize(8);
+		
+		commandMap.put("firstIndex", paginationInfo.getFirstRecordIndex());
+		commandMap.put("lastIndex", paginationInfo.getLastRecordIndex());
+		commandMap.put("recordCountPerPage", paginationInfo.getRecordCountPerPage());
+		
+		List<Employee> employeelist = employeeservice.selectEmployeeList(commandMap);
 		model.addAttribute("employeelist",employeelist);
+		
+		int employeeCount = employeeservice.getEmployeeCount(commandMap);
+		paginationInfo.setTotalRecordCount(employeeCount);
+		model.addAttribute("paginationInfo", paginationInfo);
 		return "employee/employeeList";
 	}
-
+	
 	@RequestMapping(value = "/employeeView.do")
 	protected String employeeAdd(@RequestParam String id, ModelMap model) throws Exception {
 		Employee vo = new Employee();
