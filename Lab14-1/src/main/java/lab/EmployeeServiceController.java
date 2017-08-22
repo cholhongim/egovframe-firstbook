@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springmodules.validation.commons.DefaultBeanValidator;
-
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 @Controller
@@ -48,8 +47,8 @@ public class EmployeeServiceController {
 	}
 
 	@RequestMapping(value = "/employeeList.do")
-	protected String employList(@RequestParam(value = "pageNo", required = false) String pageNo, ModelMap model,
-			@RequestParam Map<String, Object> commandMap) throws Exception{
+	protected String employList(@RequestParam(value = "pageNo", required = false) String pageNo, searchCriteria searchCriteria, ModelMap model,
+		@RequestParam Map<String, Object> commandMap) throws Exception{
 
 		int currentPageNo;
 		try {
@@ -69,6 +68,7 @@ public class EmployeeServiceController {
 		
 		List<Employee> employeelist = employeeservice.selectEmployeeList(commandMap);
 		model.addAttribute("employeelist",employeelist);
+		model.addAttribute("searchCriteria", searchCriteria);
 		
 		int employeeCount = employeeservice.getEmployeeCount(commandMap);
 		paginationInfo.setTotalRecordCount(employeeCount);

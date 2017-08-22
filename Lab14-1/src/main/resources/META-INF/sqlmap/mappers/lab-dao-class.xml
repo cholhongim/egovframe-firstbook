@@ -38,6 +38,13 @@
 			<![CDATA[
 				select	id, name
 				from	employee	
+			]]>
+				<where>
+					<if test="searchName != null and searchName != ''">
+		    			name like '%${searchName}%'
+					</if>
+				</where>
+			<![CDATA[
 				order by CONVERT(id,SIGNED)
 	            limit #{firstIndex}, #{recordCountPerPage}
 			]]>
@@ -55,6 +62,11 @@
 			select count(*) id
 			from employee
 		]]>
+				<where>
+					<if test="searchName != null and searchName != ''">
+		    			name like '%${searchName}%'
+					</if>
+				</where>
 	</select>
 </mapper>
 
