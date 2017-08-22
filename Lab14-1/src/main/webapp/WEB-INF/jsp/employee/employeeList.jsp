@@ -13,7 +13,6 @@
 	function linkPage(pageNo){
 		location.href = "employeeList.do?pageNo="+pageNo;
 	}
-	
 </script>
 <body>
 <form:form commandName="searchCriteria" action="employeeList.do">
@@ -47,23 +46,17 @@
         </c:forEach>
         </tbody>
     </table>
-
 		<div id="pagination">
 		<ui:pagination paginationInfo = "${paginationInfo}"
 			type="image"
 			jsFunction="linkPage"
 			/>
 		</div>	
-
     <p>
     	<div class="txt-rt mt20">
 		<input type="button" value="사원추가" onclick="location.href='employeeAdd.do'" />
 	</div>
 </div>
 </form:form>
-
 </body>
 </html>
-
-
-
