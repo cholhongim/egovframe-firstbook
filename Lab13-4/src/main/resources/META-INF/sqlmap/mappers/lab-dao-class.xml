@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="employee">
+    
+	<resultMap id="employeeResult" type="employeeVO">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="dept" column="dept" />
+		<result property="age" column="age" />
+		<result property="phone" column="phone" />
+		<result property="email" column="email" />
+		<result property="address" column="addr" />
+	</resultMap>
+
+	<insert id="insertEmployee" parameterType="employeeVO">
+			<![CDATA[
+				insert into employee (id, name, dept, age, phone, email, addr)
+				values	(#{id}, #{name}, #{dept}, #{age}, #{phone}, #{email}, #{address})
+			]]>
+	</insert>
+	
+	<update id="updateEmployee" parameterType="employeeVO">
+			<![CDATA[
+				update employee set name=#{name}, dept=#{dept}, age=#{age}, phone=#{phone}, email=#{email}, addr=#{address}
+				where id = #{id} 
+			]]>
+	</update>
+
+	<delete id="deleteEmployee" parameterType="employeeVO">
+			<![CDATA[
+				delete from employee
+				where id = #{id}
+			]]>
+	</delete>
+
+	<select id="selectEmployeeList" parameterType="java.util.Map" resultMap="employeeResult">
+			<![CDATA[
+				select	id, name
+				from	employee	
+			]]>
+				<where>
+					<if test="searchName != null and searchName != ''">
+		    			name like '%${searchName}%'
+					</if>
+				</where>
+			<![CDATA[
+				order by CONVERT(id,SIGNED)
+	            limit #{firstIndex}, #{recordCountPerPage}
+			]]>
+	</select>
+	
+	<select id="selectEmployee" parameterType="employeeVO" resultMap="employeeResult">
+			<![CDATA[
+				select	id, name, dept, age, phone, email, addr
+				from	employee	
+				where id = #{id} 
+			]]>
+	</select>
+		<select id="getEmployeeCount" parameterType="java.util.Map" resultType="int">
+	    <![CDATA[
+			select count(*) id
+			from employee
+		]]>
+				<where>
+					<if test="searchName != null and searchName != ''">
+		    			name like '%${searchName}%'
+					</if>
+				</where>
+	</select>
+</mapper>
+
