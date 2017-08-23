@@ -47,7 +47,7 @@ public class EmployeeServiceController {
 	}
 
 	@RequestMapping(value = "/employeeList.do")
-	protected String employList(@RequestParam(value = "pageNo", required = false) String pageNo, searchCriteria searchCriteria, ModelMap model,
+	protected String employList(@RequestParam(value = "pageNo", required = false) String pageNo, @ModelAttribute("searchCriteria") searchCriteria searchCriteria, ModelMap model,
 		@RequestParam Map<String, Object> commandMap) throws Exception{
 
 		int currentPageNo;
